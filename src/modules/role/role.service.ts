@@ -4,8 +4,6 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { getConnection } from 'typeorm';
-import { MapperService } from '../../shared/mapper.service';
 import { Rol } from './role.entity';
 import { RoleRepository } from './role.repository';
 
@@ -13,7 +11,7 @@ import { RoleRepository } from './role.repository';
 export class RoleService {
   constructor(
     @InjectRepository(RoleRepository)
-    private readonly _RoleRepository: RoleRepository, // @InjectRepository(MapperService) // private readonly _mapperService: MapperService,
+    private readonly _RoleRepository: RoleRepository,
   ) {}
   async get(id: number): Promise<Rol> {
     if (!id) {
@@ -28,7 +26,6 @@ export class RoleService {
     return role;
   }
   async getAll(): Promise<Rol[]> {
-    // async getAll(): Promise<roleDto[]> {
     const roles: Rol[] = await this._RoleRepository.find({
       where: { status: 'ACITVE' },
     });
@@ -36,8 +33,6 @@ export class RoleService {
   }
 
   async create(role: Rol): Promise<Rol> {
-    // async create(role: role): Promise<roleDto> {
-
     const savedRole = await this._RoleRepository.save(role);
     return savedRole;
   }
