@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 import { UserDetails } from './../user.details.entity';
-import { RoleTye } from './../../role/roletype.enum';
+import { RoleType } from '../../role/roletype.enum';
 
 export class UserDto {
   @IsNotEmpty()
@@ -10,7 +10,7 @@ export class UserDto {
   @IsNotEmpty()
   email: string;
   @IsNotEmpty()
-  roles: RoleTye[];
+  roles: RoleType[];
   @IsNotEmpty()
   details: UserDetails;
 }

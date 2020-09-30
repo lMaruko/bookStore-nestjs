@@ -13,7 +13,7 @@ import { Rol } from './role.entity';
 import { RoleService } from './role.service';
 
 @Controller('roles')
-export class UserController {
+export class RoleController {
   constructor(private readonly _roleService: RoleService) {}
   @Get(':id')
   async getRole(@Param('id', ParseIntPipe) id: number): Promise<Rol> {
